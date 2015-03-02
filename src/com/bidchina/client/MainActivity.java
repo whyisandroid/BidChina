@@ -30,7 +30,6 @@ import com.bidchina.client.util.Config;
 import com.bidchina.client.util.ProgressDialogUtil;
 import com.bidchina.client.util.PullToRefreshView;
 import com.bidchina.client.util.PullToRefreshView.OnFooterRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 
 
 public class MainActivity extends Activity implements OnClickListener,OnFooterRefreshListener{
@@ -135,15 +134,12 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 						}
 					} else {
 						mHandler.obtainMessage(2).sendToTarget();
-						Toast.makeText(MainActivity.this, bidResp.getMsg(),
-								Toast.LENGTH_LONG).show();
+						//Toast.makeText(MainActivity.this, bidResp.getMsg(),Toast.LENGTH_LONG).show();
 					}
 				} catch (BusinessException e) {
 					e.printStackTrace();
 					mHandler.obtainMessage(2).sendToTarget();
-					Toast.makeText(MainActivity.this,
-							e.getErrorMessage().getMessage(), Toast.LENGTH_LONG)
-							.show();
+					//Toast.makeText(MainActivity.this,e.getErrorMessage().getMessage(), Toast.LENGTH_LONG).show();
 				}
 			}
 		}).start();

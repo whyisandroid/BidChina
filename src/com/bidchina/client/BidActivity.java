@@ -1,5 +1,7 @@
 package com.bidchina.client;
 
+import com.bidchina.client.util.ShareUtil;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
@@ -16,6 +18,9 @@ public class BidActivity extends Activity {
 	private TextView tv_detail_date;
 	private ImageButton main_top_left;
 	
+	private TextView tv_share;
+	private BidDetailData bidDetail;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,11 +36,13 @@ public class BidActivity extends Activity {
 		tv_detail_title2 = (TextView)findViewById(R.id.tv_detail_title2);
 		tv_detail_date = (TextView)findViewById(R.id.tv_detail_date);
 		main_top_left = (ImageButton)findViewById(R.id.main_top_left);
+		tv_share = (TextView)findViewById(R.id.tv_share);
 	}
 
 	private void initView() {
 		main_top_left.setOnClickListener(leftListener);
-		BidDetailData bidDetail = (BidDetailData)getIntent().getExtras().getSerializable("BidDetail");
+		tv_share.setOnClickListener(shareListener);
+		 bidDetail = (BidDetailData)getIntent().getExtras().getSerializable("BidDetail");
 		if(bidDetail != null){
 			tv_detail_title.setText(bidDetail.getTitle());
 			tv_detail_title2.setText(bidDetail.getTitle());
@@ -50,7 +57,19 @@ public class BidActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			BidActivity.this.finish();
-			
+		}
+	};
+	
+	private OnClickListener shareListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			if(bidDetail != null){
+				String title = bidDetail.getTitle();
+				String text = bidDetail.getTitle();
+				ShareMessage share =  new ShareMessage(text,title);
+				ShareUtil.showShare(BidActivity.this, share);
+			}
 		}
 	};
 }
