@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
-import com.bidchina.client.util.LogUtil;
+import com.bidchina.client.until.LogUtil;
 
 
 /**

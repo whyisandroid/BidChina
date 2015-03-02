@@ -1,4 +1,4 @@
-package com.bidchina.client.util;
+package com.bidchina.client.until;
 
 import android.annotation.TargetApi;
 import android.content.ClipData;

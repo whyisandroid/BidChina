@@ -10,10 +10,10 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
 
-import com.bidchina.client.util.Config;
-import com.bidchina.client.util.Json_U;
-import com.bidchina.client.util.LogUtil;
-import com.bidchina.client.util.MD5Test;
+import com.bidchina.client.until.Config;
+import com.bidchina.client.until.Json_U;
+import com.bidchina.client.until.LogUtil;
+import com.bidchina.client.until.MD5Test;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseStream;

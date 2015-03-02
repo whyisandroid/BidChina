@@ -1,6 +1,6 @@
 package com.bidchina.client;
 
-import com.bidchina.client.util.ShareUtil;
+import com.bidchina.client.until.ShareUtil;
 
 import android.app.Activity;
 import android.os.Bundle;

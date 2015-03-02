@@ -3,72 +3,98 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/window_bg"
-    android:padding="20dp"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="20dp" >
 
     <Button
         android:id="@+id/bt_choose_column"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="请选择：栏目" />
+        android:text="请选择：栏目"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        >
 
         <EditText
             android:id="@+id/et_keywords"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
+            android:ems="10"
             android:hint="查找关键词"
+            android:singleLine="true"
             android:textColorHint="@color/new_color_3"
-        	android:textSize="@dimen/new_size_3"
-            android:ems="10" />
+            android:textSize="@dimen/new_size_3" />
+        
+        <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="50dp" >
 
         <Spinner
             android:id="@+id/sp_categrae"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            />
+            style="@style/Normal_Loan_Spinner" />
 
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow_down" />
+    </RelativeLayout>
     </LinearLayout>
-    
+
     <Button
         android:id="@+id/bt_choose_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="请选择：地区" />
-    
+
     <Button
         android:id="@+id/bt_choose_vocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="请选择：行业" />
-    
-    
-    <Spinner
-            android:id="@+id/sp_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            />
+        android:text="请选择：行业"
+        android:visibility="gone" />
 
-    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_height="50dp" >
+
+        <Spinner
+            android:id="@+id/sp_time"
+            style="@style/Normal_Loan_Spinner"
+            android:paddingLeft="100dp"
+            android:gravity="center"
+             />
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow_down" />
+    </RelativeLayout>
+
     <Button
-                android:id="@+id/bt_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="@dimen/dimen_large"
-                android:layout_marginRight="@dimen/dimen_large"
-                android:layout_marginTop="@dimen/dimen_other_large"
-                android:background="@drawable/bt_next_xml"
-                android:padding="@dimen/dimen_normal"
-                android:text="开始搜索"
-                android:textColor="@color/white"
-                android:textSize="@dimen/new_size_1" />
+        android:id="@+id/bt_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/dimen_large"
+        android:layout_marginRight="@dimen/dimen_large"
+        android:layout_marginTop="@dimen/dimen_other_large"
+        android:background="@drawable/bt_next_xml"
+        android:padding="@dimen/dimen_normal"
+        android:text="开始搜索"
+        android:textColor="@color/white"
+        android:textSize="@dimen/new_size_1" />
 
 </LinearLayout>

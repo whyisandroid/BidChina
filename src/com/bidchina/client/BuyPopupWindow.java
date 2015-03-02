@@ -25,8 +25,8 @@ import com.bidchina.client.net.AppSocketInterface;
 import com.bidchina.client.net.BusinessException;
 import com.bidchina.client.net.Request;
 import com.bidchina.client.net.XUtilsSocketImpl;
-import com.bidchina.client.util.Config;
-import com.bidchina.client.util.ProgressDialogUtil;
+import com.bidchina.client.until.Config;
+import com.bidchina.client.until.ProgressDialogUtil;
 
 public class BuyPopupWindow implements OnClickListener{
 	private Context mContext;

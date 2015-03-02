@@ -1,4 +1,4 @@
-﻿package com.bidchina.client.util;
+﻿package com.bidchina.client.until;
 
 import com.bidchina.client.net.BusinessException;
 import com.bidchina.client.net.ErrorMessage;

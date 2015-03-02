@@ -26,10 +26,10 @@ import com.bidchina.client.net.AppSocketInterface;
 import com.bidchina.client.net.BusinessException;
 import com.bidchina.client.net.Request;
 import com.bidchina.client.net.XUtilsSocketImpl;
-import com.bidchina.client.util.Config;
-import com.bidchina.client.util.ProgressDialogUtil;
-import com.bidchina.client.util.PullToRefreshView;
-import com.bidchina.client.util.PullToRefreshView.OnFooterRefreshListener;
+import com.bidchina.client.until.Config;
+import com.bidchina.client.until.ProgressDialogUtil;
+import com.bidchina.client.until.PullToRefreshView;
+import com.bidchina.client.until.PullToRefreshView.OnFooterRefreshListener;
 
 
 public class MainActivity extends Activity implements OnClickListener,OnFooterRefreshListener{
