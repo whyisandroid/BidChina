@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 定义标准颜色 -->
+    <color name="white">#FFFFFF</color> <!-- 纯白 -->
+    <color name="black">#000000</color> <!-- 纯黑 -->
+    <color name="red"> #d72839</color>
+    <color name="red_more"> #A72839</color>
+    <color name="transparent_color">#00000000</color> <!-- 透明色 -->
+    <color name="yello_text_top">#ac8e5f</color>
+    <color name="yello_bg_top">#4c4236</color>
+    <color name="gray_bg_main">#eeeeee</color>
+    <color name="gray_text_small">#5a5757</color>
+    <color name="gray_bg_jindutiao">#bababa</color>
+    <color name="gray_text_click">#322b25</color>
+    <color name="loan_apply_title_color">#595757</color>
+    <color name="login_bt_size_color">#888888</color>
+    <color name="dailog_color_size">#4C79FF</color>
+    <color name="red_main">#d72839</color>
+    <color name="window_bg">#ededed</color>
+    <color name="gray">#808080</color>
+    <color name="item_bg_color">#99DBFE</color>
+    <color name="item_bg_dark_gray_color">#BDC3C7</color>
+    <color name="item_bg_m_gray_color">#C7CCD0</color>
+    <color name="darkgray">#474c54</color>
+    <color name="middlegray">#919CA9</color>
+    <color name="lightgray">#cccccc</color>
+    <color name="redmain">#d72839</color>
+    <color name="bggray">#e2e2e2</color>
+    <color name="bgline">#bbbbbb</color>
+    <color name="rangebarleft">#0096cd</color>
+    <color name="rangebarright">#37e9fa</color>
+    <color name="rangebarbg">#ededed</color>
+    <color name="tabs_color">#EFEFEF</color>
+    <color name="spilt_line_color">#CFCFCF</color>
+    <color name="acc_bg">#f2f2f2</color>
+    <color name="edit_bg">#F6f6f6</color>
+    <color name="bank_bg">#939ba7</color>
+    <color name="bank_info_bg">#F4F4F4</color>
+    <color name="acc_open_color">#861931</color>
+    <color name="blue_text">#0099cc</color>
+    <color name="share_back">#FFF2F2F2</color>
+	<color name="share_text">#aaaaaa</color>
+	<!-- 字体颜色标准 -->
+	<color name = "new_color_1">#231815</color>
+	<color name = "new_color_2">#525861</color>
+	<color name = "new_color_3">#828A98</color>
+	<color name = "new_color_4">#CCCCCC</color>
+	<color name = "new_color_5">#CD102C</color>
+	<color name = "new_color_6">#FFFFFF</color>
+	
+	<color name = "new_color_7">#3B3B3B</color>
+	
+	<color name = "acc_bg_color">#AE0227</color>
+	<color name = "acc_bt_press">#630000</color>
+	<color name = "pro_bt_splitor">#c6c6c6</color>
+	
+	<color name = "home_bg_color">#f9f4ea</color>
+	<color name = "product_bank_color">#6bc2fc</color>
+	<color name = "product_list_click_color">#f4f4f4</color><!--  -->
+	<color name = "support_bank_color">#70B8E6</color>
+	
+	<color name="lock_pattern_gray">#DCDDDD</color>
+	<color name="lock_pattern_orange">#E95514</color>
+	
+	<color name="withdraw_bankcard_delete">#EC554C</color>
+	<color name="dialog_bxbz">#7F7F7F</color>
+	<color name="dialog_bxbz1">#F7F7F7</color>
+	<color name="dialog_bxbz2">#EFEFEF</color>
+	<color name="dialog_code_tick">#35C7DB</color>
+	<color name="dialog_background_gray">#d72839</color>
+	<color name="dialog_province_title">#E5E5E5</color>
+	<color name="dialog_item_pressed">#f4f4f4</color>
+	
+	<color name="off_point">#7fFFFFFF</color>
+	<color name="security_bg">#F9F6EF</color>
+	
+	<color name="intro_yixin">#4ABFED</color>
+	<color name="hand_title">#605A5A</color>
+	<color name="hand_botom">#66605D</color>
+	
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_bg"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_top_height"
+        android:background="#DF3031" >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="招标采购信息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/new_size_2" />
+        
+        <TextView
+            android:id="@+id/tv_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_normal"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="筛选"
+            android:textColor="@color/white"
+            android:textSize="@dimen/new_size_2" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <RadioButton
+                android:id="@+id/rb_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_chance_new"
+                android:button="@null"
+                android:checked="true"
+                android:paddingBottom="7dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="7dp"
+                android:text="招标采购"
+                android:textColor="@color/btn_color_choose"
+                android:textSize="@dimen/new_size_2" />
+
+            <RadioButton
+                android:id="@+id/rb_project"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_chance_new"
+                android:button="@null"
+                android:paddingBottom="7dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="7dp"
+                android:text="项目信息"
+                android:textColor="@color/btn_color_choose"
+                android:textSize="@dimen/new_size_2" />
+        </RadioGroup>
+    </RelativeLayout>
+    
+    
+    
+<com.bidchina.client.util.PullToRefreshView
+    android:id="@+id/pull_bid_refresh"
+    android:layout_width="match_parent"
+     android:layout_height="match_parent"
+    >
+    <ListView
+        android:id="@+id/lv_bid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+</com.bidchina.client.util.PullToRefreshView>
+
+</LinearLayout>
