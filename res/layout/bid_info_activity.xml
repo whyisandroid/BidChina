@@ -57,6 +57,7 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content" >
 
         <LinearLayout
@@ -109,5 +110,12 @@
                 android:textColor="@color/black" />
         </LinearLayout>
     </ScrollView>
+    
+    
+      <com.bidchina.client.MyWebview
+        android:id="@+id/wv_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </LinearLayout>

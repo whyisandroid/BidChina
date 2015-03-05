@@ -1,14 +1,19 @@
 package com.bidchina.client;
 
-import com.bidchina.client.until.ShareUtil;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings.LayoutAlgorithm;
+import android.webkit.WebSettings;
+import android.webkit.WebSettings.TextSize;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.bidchina.client.until.ShareUtil;
 
 public class BidActivity extends Activity {
 	private TextView tv_detail_title;
@@ -20,6 +25,8 @@ public class BidActivity extends Activity {
 	
 	private TextView tv_share;
 	private BidDetailData bidDetail;
+	
+	private MyWebview wv_show;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,8 @@ public class BidActivity extends Activity {
 		tv_detail_date = (TextView)findViewById(R.id.tv_detail_date);
 		main_top_left = (ImageButton)findViewById(R.id.main_top_left);
 		tv_share = (TextView)findViewById(R.id.tv_share);
+		
+		wv_show = (MyWebview)findViewById(R.id.wv_show);
 	}
 
 	private void initView() {
@@ -50,6 +59,22 @@ public class BidActivity extends Activity {
 			tv_description.setText(Html.fromHtml(bidDetail.getDescription()));
 			tv_content.setText(Html.fromHtml(bidDetail.getContent()));
 		}
+		
+		String htmlData = "<br>"+bidDetail.getTitle() +"<br><br>"+bidDetail.getDate() +bidDetail.getDescription()+bidDetail.getContent()+"<br>";
+		htmlData = htmlData.replaceAll("&amp;", "");
+        htmlData = htmlData.replaceAll("quot;", "\"");
+        htmlData = htmlData.replaceAll("lt;", "<");
+        htmlData = htmlData.replaceAll("gt;", ">");
+        
+        
+        
+        wv_show.getSettings().setTextSize(TextSize.LARGEST);
+        wv_show.setInitialScale(39);  // 使用竖屏
+        initWebViewSetting(wv_show);  
+        wv_show.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN); 
+        wv_show.setVisibility(View.VISIBLE);
+        wv_show.loadDataWithBaseURL(null, htmlData, "text/html", "utf-8", null); 
+        wv_show.setWebChromeClient(new WebChromeClient()); 
 	}
 	
 	private OnClickListener leftListener = new OnClickListener() {
@@ -72,4 +97,54 @@ public class BidActivity extends Activity {
 			}
 		}
 	};
+	
+	
+private void initWebViewSetting(MyWebview webView) {
+		
+		WebSettings mWebSettings = webView.getSettings();
+		// 有图 or 无图
+		mWebSettings.setLoadsImagesAutomatically(true);
+		// 弹窗
+		mWebSettings.setSupportMultipleWindows(false);
+		// 设置JavaScript有效性
+		mWebSettings.setJavaScriptEnabled(true);
+		mWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+		// 开启 HTML5 Web Storage
+		mWebSettings.setDomStorageEnabled(true);
+		mWebSettings.setDatabaseEnabled(true);
+		// String databasePath = getContext().getDir("database",
+		// Context.MODE_PRIVATE).getPath();
+		// mWebSettings.setDatabasePath(databasePath);
+		// 支持使用插件
+		// mWebSettings.setPluginsEnabled(true);
+		mWebSettings.setAllowFileAccess(true);
+		// 2.2以上版本支持
+		// if(android.os.Build.VERSION.SDK >
+		// android.os.Build.VERSION_CODES.ECLAIR_MR1){
+		// mWebSettings.setPluginState(PluginState.ON);
+		// }
+		mWebSettings.setNeedInitialFocus(true);
+		// mWebSettings.setUserAgentString(WebSharedPref.USERAGENT);
+		// 设置是否保存密码
+		mWebSettings.setSavePassword(true);
+		mWebSettings.setSaveFormData(true);
+		// 保存cookies
+		// CookieManager.getInstance().setAcceptCookie(true);
+		mWebSettings.setSupportZoom(false);
+		mWebSettings.setBuiltInZoomControls(false);
+		// 配合概览模式参数，如果不设置，概览模式将不起作用
+		mWebSettings.setUseWideViewPort(true);
+		// 设置为概览模式
+		mWebSettings.setLoadWithOverviewMode(true);
+		// 缓存模式
+		mWebSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+		// if(NetWorkHelper.isNetworkAvailable(ApplyMainFragment.this.getActivity())){
+		// mWebSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
+		// }else{
+		// mWebSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+		// }
+		//mWebSettings.setUseWideViewPort(true);
+	}
+	
 }
