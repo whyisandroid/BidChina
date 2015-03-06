@@ -12,6 +12,7 @@ package com.bidchina.client;
 public class ShareMessage {
 	private String title;
 	private String text;
+	private String textDetails;
 	private String imageURL;
 	private String downURL;
 	
@@ -21,9 +22,10 @@ public class ShareMessage {
 	  * @param 
 	  * @param text
 	  */
-	public ShareMessage(String text,String title,String url) {
+	public ShareMessage(String text,String title,String url,String htmlData) {
 		this.text = text;
 		this.title = title;
+		this.textDetails = htmlData;
 		this.downURL = url;
 	}
 	/**
@@ -74,5 +76,16 @@ public class ShareMessage {
 	public void setDownURL(String downURL) {
 		this.downURL = downURL;
 	}
-
+	/**
+	 * @return the textDetails
+	 */
+	public String getTextDetails() {
+		return textDetails;
+	}
+	/**
+	 * @param textDetails the textDetails to set
+	 */
+	public void setTextDetails(String textDetails) {
+		this.textDetails = textDetails;
+	}
 }

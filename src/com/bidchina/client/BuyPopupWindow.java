@@ -370,7 +370,7 @@ public class BuyPopupWindow implements OnClickListener{
 		if("近一天".equals(cate)){
 			value = "day";
 		}else if("近一周".equals(cate)){
-			value = "weeek";
+			value = "week";
 		}else if("近二周".equals(cate)){
 			value = "two";
 		}else if("近一月".equals(cate)){

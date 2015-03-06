@@ -35,7 +35,7 @@ public class BidActivity extends Activity {
 	private BidDetailData bidDetail;
 	
 	private MyWebview wv_show;
-	
+	private String htmlData = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class BidActivity extends Activity {
 			tv_content.setText(Html.fromHtml(bidDetail.getContent()));
 		}
 		
-		String htmlData = "<br>"+bidDetail.getTitle() +"<br><br>"+bidDetail.getDate() +bidDetail.getDescription()+bidDetail.getContent()+"<br>";
+		htmlData = "<br>"+bidDetail.getTitle() +"<br><br>"+bidDetail.getDate() +bidDetail.getDescription()+bidDetail.getContent()+"<br>";
 		htmlData = htmlData.replaceAll("&amp;", "");
         htmlData = htmlData.replaceAll("quot;", "\"");
         htmlData = htmlData.replaceAll("lt;", "<");
@@ -101,8 +101,9 @@ public class BidActivity extends Activity {
 			if(bidDetail != null){
 				String title = bidDetail.getTitle();
 				String text = bidDetail.getTitle();
+				String textDetail = htmlData;
 				String url = Config.HTTP_SEARCH_SHARE + getURLType();
-				ShareMessage share =  new ShareMessage(text,title,url);
+				ShareMessage share =  new ShareMessage(text,title,url,textDetail);
 				ShareUtil.showShare(BidActivity.this, share);
 			}
 		}

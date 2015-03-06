@@ -122,6 +122,7 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 			public void run() {
 				 request = new Request<BidResp>();
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+				nameValuePairs.add(new BasicNameValuePair("b_date", "week"));
 				nameValuePairs.add(new BasicNameValuePair("api_key", "app_key"));
 				request.addParameter(Request.AJAXPARAMS, nameValuePairs);
 				request.setUrl(Config.HTTP_SEARCH);
@@ -164,7 +165,6 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 				public void run() {
 					Request<BidDetailResp> request = new Request<BidDetailResp>();
 					List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-					
 					nameValuePairs.add(new BasicNameValuePair("url", bidList.get(arg2).getUrl()));
 					/*try {
 						nameValuePairs.add(new BasicNameValuePair("url", URLEncoder.encode("http://www.chinabidding.com.cn/zbgg/E6zU.html","GBK")));

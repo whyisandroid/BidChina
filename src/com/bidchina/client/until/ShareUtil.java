@@ -16,7 +16,6 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.onekeyshare.ShareContentCustomizeCallback;
 import cn.sharesdk.wechat.friends.Wechat;
-import cn.sharesdk.wechat.moments.WechatMoments;
 
 import com.bidchina.client.R;
 import com.bidchina.client.ShareMessage;
@@ -153,7 +152,13 @@ class ShareContent implements ShareContentCustomizeCallback {
 			paramsToShare.setUrl(webURL);
 			paramsToShare.setImagePath("");
 			paramsToShare.setImageUrl("");
-		} else if (WechatMoments.NAME.equals(platform.getName())) { // 微信朋友圈
+		}else if("Email".equals(platform.getName())){
+			paramsToShare.setShareType(Platform.SHARE_TEXT);
+			paramsToShare.setTitle(text);
+			paramsToShare.setText(share.getTextDetails());
+			paramsToShare.setAddress("");
+		}
+		/* else if (WechatMoments.NAME.equals(platform.getName())) { // 微信朋友圈
 			paramsToShare.setShareType(Platform.SHARE_WEBPAGE);
 			paramsToShare.setTitle(title);
 			paramsToShare.setText(text);
@@ -162,6 +167,6 @@ class ShareContent implements ShareContentCustomizeCallback {
 			paramsToShare.setUrl(webURL);
 			paramsToShare.setImagePath("");
 			paramsToShare.setImageUrl("");
-		} 
+		}*/ 
 	}
 }
