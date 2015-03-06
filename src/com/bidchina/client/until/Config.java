@@ -17,10 +17,18 @@ public class Config {
 	
 	// 测试
 	public final static String MY_SERVICE = "http://zhaobiaogg.linuxsong.org";
+	
+	// 测试
+	public final static String API_KEY = "app_key"; // api 秘钥
+	
+	
 	/** 临时文件保存路径. */
 	
 	//获取招标信息
 	public final static String HTTP_SEARCH = MY_SERVICE+ "/api/search";
 	//获取招标信息详情
 	public final static String HTTP_SEARCH_detail = MY_SERVICE+ "/api/detail";
+	
+	//分享URL
+	public final static String HTTP_SEARCH_SHARE = MY_SERVICE+ "/api/html?";
 }

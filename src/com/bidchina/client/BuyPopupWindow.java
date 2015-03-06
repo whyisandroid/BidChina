@@ -256,7 +256,7 @@ public class BuyPopupWindow implements OnClickListener{
 					if(et_keywords.getText().toString().length() != 0){
 						nameValuePairs.add(new BasicNameValuePair("keywords",et_keywords.getText().toString()));
 					}
-					nameValuePairs.add(new BasicNameValuePair("api_key", "app_key"));
+					nameValuePairs.add(new BasicNameValuePair("api_key", Config.API_KEY));
 					request.addParameter(Request.AJAXPARAMS, nameValuePairs);
 					request.setUrl(Config.HTTP_SEARCH);
 					request.setR_calzz(BidResp.class);

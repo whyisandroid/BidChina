@@ -21,9 +21,10 @@ public class ShareMessage {
 	  * @param 
 	  * @param text
 	  */
-	public ShareMessage(String text,String title) {
+	public ShareMessage(String text,String title,String url) {
 		this.text = text;
 		this.title = title;
+		this.downURL = url;
 	}
 	/**
 	 * @return title : return the property title.

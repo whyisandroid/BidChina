@@ -1,18 +1,26 @@
 package com.bidchina.client;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebSettings;
+import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebSettings.TextSize;
-import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bidchina.client.until.Config;
+import com.bidchina.client.until.MD5Test;
 import com.bidchina.client.until.ShareUtil;
 
 public class BidActivity extends Activity {
@@ -27,6 +35,7 @@ public class BidActivity extends Activity {
 	private BidDetailData bidDetail;
 	
 	private MyWebview wv_show;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,11 +101,31 @@ public class BidActivity extends Activity {
 			if(bidDetail != null){
 				String title = bidDetail.getTitle();
 				String text = bidDetail.getTitle();
-				ShareMessage share =  new ShareMessage(text,title);
+				String url = Config.HTTP_SEARCH_SHARE + getURLType();
+				ShareMessage share =  new ShareMessage(text,title,url);
 				ShareUtil.showShare(BidActivity.this, share);
 			}
 		}
 	};
+	
+	private String getURLType() {
+		StringBuffer sb = new  StringBuffer();
+		String URL  = getIntent().getExtras().getString("URL");
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("url",URL));
+		sb.append("url="+URL+"&");
+		nameValuePairs.add(new BasicNameValuePair("api_key", Config.API_KEY));
+		sb.append("api_key="+Config.API_KEY+"&");
+		try {
+			String sign =MD5Test.md5Sign(nameValuePairs);
+			sb.append("signature="+sign);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+		return sb.toString();
+	}
+	
+	
 	
 	
 private void initWebViewSetting(MyWebview webView) {

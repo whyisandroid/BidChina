@@ -139,10 +139,10 @@ class ShareContent implements ShareContentCustomizeCallback {
 
 	@Override
 	public void onShare(Platform platform, ShareParams paramsToShare) {
-		String title = share.getTitle();
+		String title = "招标信息";
 		String text = share.getText();
-		//String webURL = share.getDownURL();
-		String webURL = ShareUtil.downURL;
+		String webURL = share.getDownURL();
+		//String webURL = ShareUtil.downURL;
 		
 		if (Wechat.NAME.equals(platform.getName())) { // 微信朋友
 			paramsToShare.setShareType(Platform.SHARE_WEBPAGE);

@@ -102,5 +102,23 @@ public class MD5Test {
 		}
 		return sign.toString();
 	}
+	
+	
+	
+	/**
+	  * 方法描述：TODO
+	  * @return
+	  * @author: why
+	 * @throws IOException 
+	  * @time: 2014-10-21 下午8:05:52
+	  */
+	public static String md5Sign(List<NameValuePair> nameValuePairs) throws IOException {
+		HashMap<String, String> map = new HashMap<String, String>();
+		for (int i = 0; i < nameValuePairs.size(); i++) {
+			NameValuePair value = nameValuePairs.get(i);
+			map.put(value.getName(),value.getValue());
+		}
+		return MD5Test.getSignature(nameValuePairs, "secret");
+	}
 }
 

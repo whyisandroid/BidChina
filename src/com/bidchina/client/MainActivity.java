@@ -51,6 +51,8 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 	
 	private static Request<BidResp> request;
 	
+	private String URL = "";
+	
 	private Handler mHandler = new  Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -72,6 +74,7 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 				BidDetailData detail = (BidDetailData)msg.obj;
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("BidDetail", detail);
+				bundle.putString("URL", URL);
 				Intent intent = new Intent(MainActivity.this, BidActivity.class);
 				intent.putExtras(bundle);
 				startActivity(intent);
@@ -170,7 +173,7 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 						e1.printStackTrace();
 					}*/
 
-					nameValuePairs.add(new BasicNameValuePair("api_key", "app_key"));
+					nameValuePairs.add(new BasicNameValuePair("api_key", Config.API_KEY));
 					request.addParameter(Request.AJAXPARAMS, nameValuePairs);
 					request.setUrl(Config.HTTP_SEARCH_detail);
 					request.setR_calzz(BidDetailResp.class);
@@ -178,6 +181,7 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 						AppSocketInterface socket = new XUtilsSocketImpl(MainActivity.this);
 						BidDetailResp bidDetailResp = socket.shortConnect(request);
 						if("0".equals(bidDetailResp.getCode())){
+							URL = bidList.get(arg2).getUrl();
 							mHandler.obtainMessage(4,bidDetailResp.getData()).sendToTarget();
 						}else{
 							mHandler.obtainMessage(3,bidDetailResp.getMsg()).sendToTarget();
