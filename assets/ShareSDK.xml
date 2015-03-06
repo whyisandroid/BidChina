@@ -48,7 +48,7 @@
     -->
     
     <ShareSDK 
-        AppKey = "androidv1101"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+        AppKey = "5e2d9665ade2"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
     
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <SinaWeibo
@@ -92,14 +92,14 @@
     <Wechat
         Id="4"
         SortId="4"
-        AppId="wx4868b35061f87885"
+        AppId="wxcca07df87e94f5f1"
         BypassApproval="true"
         Enable="true" />
     
     <WechatMoments
         Id="5"
         SortId="5"
-        AppId="wx4868b35061f87885"
+        AppId="wxcca07df87e94f5f1"
         BypassApproval="true"
         Enable="true" />
         

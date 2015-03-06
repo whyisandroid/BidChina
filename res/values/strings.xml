@@ -11,12 +11,9 @@
     <string name="pull_to_refresh_footer_refreshing_label">加载中\u2026</string>
     <string-array name="column">
         <item>工程招标 </item>
-        <item>货物招标</item>
         <item>服务招标</item>
         <item>招标预告</item>
         <item>中标公示</item>
-        <item>政府采购</item> 
-        <item>企业采购</item>
     </string-array>
     
     <string-array name="categare">
@@ -65,23 +62,9 @@
     </string-array>
     
     <string-array name="vocation">
-        <item>交通运输</item>
         <item>市政房地产建筑</item>
-        <item>水利桥梁</item>
         <item>能源</item>
         <item>化工</item>
-        <item>环保</item>
-        <item>冶金矿产原材料</item>
-        <item>机械电子电器</item>
-        <item>网络通讯计算机</item>
-        <item>医疗卫生</item>
-        <item>园林绿化</item>
-        <item>商业服务</item>
-        <item>出版印刷</item>
-        <item>轻工纺织食品</item>
-        <item>农林牧渔</item>
-        <item>科技文教旅游</item>
-        <item>其它</item>
     </string-array>
     
     <string-array name="time">

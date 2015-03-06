@@ -18,6 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,12 +41,15 @@ public class BuyPopupWindow implements OnClickListener{
 	private Spinner sp_categrae;
 	private Spinner sp_time;
 	
+	private RadioGroup rg_categrae;
+	private int rg_checkid = 0;
+	
 	private EditText et_keywords;
 	
 	private Button bt_search;
-	//private static boolean[] columnSelected;
+	private static boolean[] columnSelected;
 	private static boolean[] citySelected;
-	//private static boolean[] vocationSelected;
+	private static boolean[] vocationSelected;
 	private List<Bid> bidList = new ArrayList<Bid>();
 	private Request<BidResp> request;
 	
@@ -83,12 +89,13 @@ public class BuyPopupWindow implements OnClickListener{
 		sp_time = (Spinner)popview.findViewById(R.id.sp_time);
 		bt_search = (Button)popview.findViewById(R.id.bt_search);
 		et_keywords = (EditText)popview.findViewById(R.id.et_keywords);
+		rg_categrae = (RadioGroup)popview.findViewById(R.id.rg_categrae);
 	}
 	
 	private void initView() {
-		//bt_choose_column.setOnClickListener(this);
+		bt_choose_column.setOnClickListener(this);
 		bt_choose_city.setOnClickListener(this);
-		//bt_choose_vocation.setOnClickListener(this);
+		bt_choose_vocation.setOnClickListener(this);
 		bt_search.setOnClickListener(this);
 		String[] cates = mContext.getResources().getStringArray(R.array.categare);
 		ArrayAdapter<String> adapter=new ArrayAdapter<String>(mContext,android.R.layout.simple_spinner_item,cates);
@@ -96,15 +103,16 @@ public class BuyPopupWindow implements OnClickListener{
 		sp_categrae.setSelection(1);
 		
 		String[] times = mContext.getResources().getStringArray(R.array.time);
-		ArrayAdapter<String> timeAdapter=new ArrayAdapter<String>(mContext,android.R.layout.simple_spinner_item,times);
+		ArrayAdapter<String> timeAdapter=new ArrayAdapter<String>(mContext,R.layout.spinnertext,times);
 		sp_time.setAdapter(timeAdapter); 
+		rg_categrae.setOnCheckedChangeListener(categraeCheckListener);
 		
 	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bt_choose_column:
-	/*		String[] column = mContext.getResources().getStringArray(R.array.column);
+			String[] column = mContext.getResources().getStringArray(R.array.column);
 			if(columnSelected == null){
 				columnSelected = new boolean[column.length];//
 			}
@@ -119,7 +127,7 @@ public class BuyPopupWindow implements OnClickListener{
                                 	columnSelected[which] = isChecked;
                                 }
                             })
-                    .setPositiveButton("ȷ��",
+                    .setPositiveButton("确定",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                         int which) {
@@ -130,12 +138,12 @@ public class BuyPopupWindow implements OnClickListener{
 										}
 									}
                                 	if(m == 0){
-                                		bt_choose_column.setText("��ѡ����Ŀ");
+                                		bt_choose_column.setText("请选择:栏目");
                                 	}else{
-                                		bt_choose_column.setText("��Ŀ��ѡ��"+m+"��");
+                                		bt_choose_column.setText("栏目已选:"+(m == 4?"全部":m)+"项");
                                 	}
                                 }
-                            }).show();*/
+                            }).show();
 			
 			
 			break;
@@ -167,7 +175,7 @@ public class BuyPopupWindow implements OnClickListener{
                                 	if(m == 0){
                                 		bt_choose_city.setText("请选择：地区");
                                 	}else{
-                                		bt_choose_city.setText("地区已选："+m+"项");
+                                		bt_choose_city.setText("地区已选："+(m == 36?"全部":m)+"项");
                                 	}
                                 }
                             }).show();
@@ -176,12 +184,12 @@ public class BuyPopupWindow implements OnClickListener{
 			break;
 			
 		case R.id.bt_choose_vocation:
-	/*		String[] vocation = mContext.getResources().getStringArray(R.array.vocation);
+			String[] vocation = mContext.getResources().getStringArray(R.array.vocation);
 			if(vocationSelected == null){
 				vocationSelected = new boolean[vocation.length];// һ�����Booleanֵ������
 			}
             new AlertDialog.Builder(mContext)
-                    .setTitle("��ҵ")
+                    .setTitle("行业")
                     // ����
                     .setMultiChoiceItems(vocation, vocationSelected,
                             new DialogInterface.OnMultiChoiceClickListener() {// ���ö�ѡ��Ŀ
@@ -190,7 +198,7 @@ public class BuyPopupWindow implements OnClickListener{
                                 	vocationSelected[which] = isChecked;
                                 }
                             })
-                    .setPositiveButton("ȷ��",
+                    .setPositiveButton("确定",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                         int which) {
@@ -201,12 +209,12 @@ public class BuyPopupWindow implements OnClickListener{
 										}
 									}
                                 	if(m == 0){
-                                		bt_choose_vocation.setText("��ѡ����ҵ");
+                                		bt_choose_vocation.setText("请选择:行业");
                                 	}else{
-                                		bt_choose_vocation.setText("��ҵ��ѡ��"+m+"��");
+                                		bt_choose_vocation.setText("行业已选:"+(m == 3?"全部":m)+"项");
                                 	}
                                 }
-                            }).show();*/
+                            }).show();
 			
 			
 			break;
@@ -223,10 +231,21 @@ public class BuyPopupWindow implements OnClickListener{
 					nameValuePairs.add(new BasicNameValuePair("page", "1"));
 					nameValuePairs.add(new BasicNameValuePair("rp", "15"));
 					
+					if(columnSelected != null){  //栏目
+						String column = getColumn();
+						nameValuePairs.add(new BasicNameValuePair("table_type", column));
+					}
+					
+					
+					if(vocationSelected != null){  // 行业
+						String vocation = getVocation();
+						nameValuePairs.add(new BasicNameValuePair("categoryid", vocation));
+					}
+					
 					String  type = getCate();
 					nameValuePairs.add(new BasicNameValuePair("search_type", type));
 					
-					if(citySelected != null){
+					if(citySelected != null){  // 城市
 						String areaid = getAreaid();
 						nameValuePairs.add(new BasicNameValuePair("areaid", areaid));
 					}
@@ -272,6 +291,58 @@ public class BuyPopupWindow implements OnClickListener{
 		}
 	}
 	
+	
+	private OnCheckedChangeListener categraeCheckListener = new OnCheckedChangeListener() {
+		
+		@Override
+		public void onCheckedChanged(RadioGroup group, int checkedId) {
+			rg_checkid = checkedId;
+		}
+	};
+	
+	
+	private String getVocation() {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < vocationSelected.length; i++) {
+			if(vocationSelected[i] == true){
+				if(i == 0){
+					sb.append(3);
+				}else if(i== 1){
+					sb.append(17);
+				}else if(i == 2){
+					sb.append(18);
+				}
+				sb.append(",");
+			}
+		}
+		if(sb.length() > 1){
+			sb.deleteCharAt(sb.length() -1);
+		}
+		return sb.toString();
+	}
+
+	private String getColumn() {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < columnSelected.length; i++) {
+			if(columnSelected[i] == true){
+				if(i == 0){
+					sb.append(1);
+				}else if(i== 1){
+					sb.append(3);
+				}else if(i == 2){
+					sb.append(4);
+				}else if(i == 3){
+					sb.append(5);
+				}
+				sb.append(",");
+			}
+		}
+		if(sb.length() > 1){
+			sb.deleteCharAt(sb.length() -1);
+		}
+		return sb.toString();
+	}
+	
 
 	private String getAreaid() {
 		StringBuffer sb = new StringBuffer();
@@ -313,7 +384,10 @@ public class BuyPopupWindow implements OnClickListener{
 	}
 
 	private String getCate() {
-		String cate = sp_categrae.getSelectedItem().toString();
+		if(rg_checkid == 0){
+			return "CONTEXT";
+		}
+		String cate = ((RadioButton)popview.findViewById(rg_checkid)).getText().toString();
 		String value = "";
 		if("标题".equals(cate)){
 			value = "TITLE";

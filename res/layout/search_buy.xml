@@ -6,75 +6,126 @@
     android:orientation="vertical"
     android:padding="20dp" >
 
-    <Button
-        android:id="@+id/bt_choose_column"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="请选择：栏目"
-        android:visibility="gone" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" 
-        >
+        android:orientation="vertical" >
 
         <EditText
             android:id="@+id/et_keywords"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="查找关键词"
+            android:hint="输入您想查找的关键词"
             android:singleLine="true"
-            android:textColorHint="@color/new_color_3"
-            android:textSize="@dimen/new_size_3" />
-        
+            android:textColorHint="@color/new_color_4"
+            android:textSize="@dimen/new_size_4" />
+
+        <RadioGroup
+            android:id="@+id/rg_categrae"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+            <RadioButton
+                android:id="@+id/radio0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/new_color_2"
+        		android:textSize="@dimen/new_size_4"
+                android:text="标题" />
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textColor="@color/new_color_2"
+        		android:textSize="@dimen/new_size_4"
+                android:text="内容" />
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/new_color_2"
+        		android:textSize="@dimen/new_size_4"
+                android:text="附件" />
+             <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/new_color_2"
+        		android:textSize="@dimen/new_size_4"
+                android:text="招标编号" />
+        </RadioGroup>
+
         <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="50dp" >
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="10dp"
+            android:visibility="gone" >
 
-        <Spinner
-            android:id="@+id/sp_categrae"
-            style="@style/Normal_Loan_Spinner" />
+            <Spinner
+                android:id="@+id/sp_categrae"
+                style="@style/Normal_Loan_Spinner" />
 
-        <ImageView
-            android:layout_width="17dp"
-            android:layout_height="8dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/arrow_down" />
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="8dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/arrow_down" />
+        </RelativeLayout>
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_choose_city"
-        android:layout_width="wrap_content"
+        android:id="@+id/bt_choose_column"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="请选择：地区" />
+        android:background="@drawable/bt_choose"
+        android:text="请选择：栏目"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/bt_choose_vocation"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_choose"
         android:text="请选择：行业"
-        android:visibility="gone" />
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/bt_choose_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bt_choose"
+        android:text="请选择：地区"
+        android:textColor="@color/white" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_height="50dp" >
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/bt_choose"
+        android:layout_marginTop="10dp"
+        >
 
         <Spinner
             android:id="@+id/sp_time"
             style="@style/Normal_Loan_Spinner"
-            android:paddingLeft="100dp"
             android:gravity="center"
+            android:textColor="@color/white"
+        	android:textSize="@dimen/new_size_4"
              />
 
         <ImageView
+            android:layout_marginRight="10dp" 
             android:layout_width="17dp"
             android:layout_height="8dp"
             android:layout_alignParentRight="true"
@@ -90,11 +141,11 @@
         android:layout_gravity="bottom"
         android:layout_marginLeft="@dimen/dimen_large"
         android:layout_marginRight="@dimen/dimen_large"
-        android:layout_marginTop="@dimen/dimen_other_large"
+        android:layout_marginTop="@dimen/dimen_normal"
         android:background="@drawable/bt_next_xml"
         android:padding="@dimen/dimen_normal"
         android:text="开始搜索"
         android:textColor="@color/white"
-        android:textSize="@dimen/new_size_1" />
+        android:textSize="@dimen/new_size_2" />
 
 </LinearLayout>

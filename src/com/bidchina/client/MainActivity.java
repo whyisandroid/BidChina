@@ -61,9 +61,12 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 			case 2:
 				pull_bid_refresh.onFooterRefreshComplete();
 				break;
+			case 22:
+				pull_bid_refresh.onFooterRefreshComplete();
+				Toast.makeText(MainActivity.this, "初始加载招标信息失败", Toast.LENGTH_LONG).show();
+				break;
 			case 3:
 				Toast.makeText(MainActivity.this,msg.obj.toString() , Toast.LENGTH_LONG).show();
-
 				break;
 			case 4:
 				BidDetailData detail = (BidDetailData)msg.obj;
@@ -133,12 +136,12 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 							mHandler.obtainMessage(1).sendToTarget();
 						}
 					} else {
-						mHandler.obtainMessage(2).sendToTarget();
+						mHandler.obtainMessage(22).sendToTarget();
 						//Toast.makeText(MainActivity.this, bidResp.getMsg(),Toast.LENGTH_LONG).show();
 					}
 				} catch (BusinessException e) {
 					e.printStackTrace();
-					mHandler.obtainMessage(2).sendToTarget();
+					mHandler.obtainMessage(22).sendToTarget();
 					//Toast.makeText(MainActivity.this,e.getErrorMessage().getMessage(), Toast.LENGTH_LONG).show();
 				}
 			}
