@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/new_color_2"
-        		android:textSize="@dimen/new_size_4"
+        		android:textSize="@dimen/new_size_7"
                 android:text="标题" />
 
             <RadioButton
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:textColor="@color/new_color_2"
-        		android:textSize="@dimen/new_size_4"
+        		android:textSize="@dimen/new_size_7"
                 android:text="内容" />
 
             <RadioButton
@@ -51,14 +51,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/new_color_2"
-        		android:textSize="@dimen/new_size_4"
+        		android:textSize="@dimen/new_size_7"
                 android:text="附件" />
              <RadioButton
                 android:id="@+id/radio3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/new_color_2"
-        		android:textSize="@dimen/new_size_4"
+        		android:textSize="@dimen/new_size_7"
+        		android:singleLine="true"
                 android:text="招标编号" />
         </RadioGroup>
 
