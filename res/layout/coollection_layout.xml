@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
+            android:gravity="center"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="10dp"
             android:ellipsize="end"
@@ -42,7 +43,10 @@
     <ListView
         android:id="@+id/lv_coollection"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+         >
     </ListView>
 
 </LinearLayout>

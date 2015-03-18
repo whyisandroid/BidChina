@@ -58,7 +58,7 @@ public class ShareUtil {
 		// 参考代码配置章节，设置分享参数
 		// 构造一个图标
 		Bitmap logo = BitmapFactory.decodeResource(context.getResources(),
-				R.drawable.logo_wechat);
+				R.drawable.logo_douban);
 		// 定义图标的标签
 		String label = "收藏";
 		// 图标点击后会通过Toast提示消息

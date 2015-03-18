@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 public class CollectionAdapter extends BaseAdapter {
 	private List<BidDetailData> mList;
@@ -34,6 +36,10 @@ public class CollectionAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		return null;
+		BidDetailData data = mList.get(position);
+		convertView =LayoutInflater.from(mContext).inflate(R.layout.collection_item, null);
+		TextView tv_collection = (TextView)convertView.findViewById(R.id.tv_collection);
+		tv_collection.setText(data.getTitle());
+		return convertView;
 	}
 }

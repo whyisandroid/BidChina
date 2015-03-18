@@ -102,6 +102,7 @@ public class BidActivity extends Activity {
 			if(bidDetail != null){
 				String title = bidDetail.getTitle();
 				String text = bidDetail.getTitle();
+				bidDetail.setUrl(getIntent().getExtras().getString("URL"));
 				String textDetail = htmlData;
 				String url = Config.HTTP_SEARCH_SHARE + getURLType();
 				ShareMessage share =  new ShareMessage(text,title,url,textDetail,bidDetail);
