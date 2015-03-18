@@ -2,11 +2,14 @@ package com.bidchina.client;
 
 import java.io.Serializable;
 
+import com.lidroid.xutils.db.annotation.Id;
+
 public class BidDetailData implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
 	private String title;
 	private String description;
 	private String content;

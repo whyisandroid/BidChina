@@ -15,6 +15,7 @@ public class ShareMessage {
 	private String textDetails;
 	private String imageURL;
 	private String downURL;
+	private BidDetailData detail;
 	
 	/**
 	  * 类的构造方法
@@ -22,11 +23,12 @@ public class ShareMessage {
 	  * @param 
 	  * @param text
 	  */
-	public ShareMessage(String text,String title,String url,String htmlData) {
+	public ShareMessage(String text,String title,String url,String htmlData,BidDetailData detail) {
 		this.text = text;
 		this.title = title;
 		this.textDetails = htmlData;
 		this.downURL = url;
+		this.detail = detail;
 	}
 	/**
 	 * @return title : return the property title.
@@ -87,5 +89,13 @@ public class ShareMessage {
 	 */
 	public void setTextDetails(String textDetails) {
 		this.textDetails = textDetails;
+	}
+	
+	public void setDetail(BidDetailData detail) {
+		this.detail = detail;
+	}
+	
+	public BidDetailData getDetail() {
+		return detail;
 	}
 }

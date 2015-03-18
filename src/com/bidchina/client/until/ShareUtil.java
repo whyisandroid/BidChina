@@ -17,9 +17,12 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.onekeyshare.ShareContentCustomizeCallback;
 import cn.sharesdk.wechat.friends.Wechat;
 
+import com.bidchina.client.BidDetailData;
 import com.bidchina.client.R;
 import com.bidchina.client.ShareMessage;
 import com.bidchina.client.net.NetWorkHelper;
+import com.lidroid.xutils.DbUtils;
+import com.lidroid.xutils.exception.DbException;
 
 
 /******************************************
@@ -44,29 +47,41 @@ public class ShareUtil {
 		// 关闭sso授权
 		// oks.disableSSOWhenAuthorize();
 		// 添加自定义分享
-		//addURLLogo(oks, context);
+		addURLLogo(oks, context,share.getDetail());
 	//	addMessageLogo(oks, context,share.getText());
 		oks.setShareContentCustomizeCallback(new ShareContent(context,share));
 		// 启动分享GUI
 		oks.show(context);
 	}
 
-	private static void addURLLogo(final OnekeyShare oks, final Context context) {
+	private static void addURLLogo(final OnekeyShare oks, final Context context,final BidDetailData detail) {
 		// 参考代码配置章节，设置分享参数
 		// 构造一个图标
 		Bitmap logo = BitmapFactory.decodeResource(context.getResources(),
 				R.drawable.logo_wechat);
 		// 定义图标的标签
-		String label = "复制下载链接";
+		String label = "收藏";
 		// 图标点击后会通过Toast提示消息
 		OnClickListener listener = new OnClickListener() {
 			public void onClick(View v) {
-				copyText(downURL, context);
-				Toast.makeText(context, "下载链接已复制", Toast.LENGTH_SHORT).show();
+				//收藏过程
+				collection(context,detail);
+				//copyText(downURL, context);
+				Toast.makeText(context, "已收藏", Toast.LENGTH_SHORT).show();
 				oks.finish();
 			}
+
 		};
 		oks.setCustomerLogo(logo, label, listener);
+	}
+
+	private static void collection(Context mContext,BidDetailData detail) {
+		DbUtils db = DbUtils.create(mContext); 
+		try {
+			db.save(detail);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void addMessageLogo(final OnekeyShare oks,

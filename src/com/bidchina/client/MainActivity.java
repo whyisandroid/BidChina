@@ -35,6 +35,7 @@ import com.bidchina.client.until.PullToRefreshView.OnFooterRefreshListener;
 public class MainActivity extends Activity implements OnClickListener,OnFooterRefreshListener{
 	private ListView lv_bid;
 	private TextView tv_choose;
+	private TextView tv_save;
 	private RadioButton rb_buy;
 	private RadioButton rb_project;
 //	private boolean rbFlag = true;
@@ -100,6 +101,7 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 		rb_buy = (RadioButton)findViewById(R.id.rb_buy);
 		rb_project = (RadioButton)findViewById(R.id.rb_project);
 		pull_bid_refresh = (PullToRefreshView)findViewById(R.id.pull_bid_refresh);
+		tv_save = (TextView)findViewById(R.id.tv_save);
 	}
 
 	private void initView() {
@@ -110,6 +112,7 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 		adapter = new BidAdpter(this,bidList);
 		lv_bid.setAdapter(adapter);
 		lv_bid.setOnItemClickListener(bidItemListener);
+		tv_save.setOnClickListener(this);
 	}
 	
 	
@@ -232,7 +235,10 @@ public class MainActivity extends Activity implements OnClickListener,OnFooterRe
 		case R.id.rb_project:
 		//	rbFlag = false;
 			break;
-
+		case R.id.tv_save:
+			Intent intent = new Intent(this,CollectionActivity.class);
+			startActivity(intent);
+			break;
 		default:
 			break;
 		}

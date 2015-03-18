@@ -61,6 +61,7 @@ public class BidActivity extends Activity {
 		main_top_left.setOnClickListener(leftListener);
 		tv_share.setOnClickListener(shareListener);
 		 bidDetail = (BidDetailData)getIntent().getExtras().getSerializable("BidDetail");
+		 
 		if(bidDetail != null){
 			tv_detail_title.setText(bidDetail.getTitle());
 			tv_detail_title2.setText(bidDetail.getTitle());
@@ -103,7 +104,7 @@ public class BidActivity extends Activity {
 				String text = bidDetail.getTitle();
 				String textDetail = htmlData;
 				String url = Config.HTTP_SEARCH_SHARE + getURLType();
-				ShareMessage share =  new ShareMessage(text,title,url,textDetail);
+				ShareMessage share =  new ShareMessage(text,title,url,textDetail,bidDetail);
 				ShareUtil.showShare(BidActivity.this, share);
 			}
 		}
